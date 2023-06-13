@@ -17,7 +17,7 @@ const thoughtController = {
         });
 },
 //get thought by id
-getThoughBuyId({ params
+getThoughById({ params
 }, res) {
     Thought.findOne({_id:params.id})
     .populate({
