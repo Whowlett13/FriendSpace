@@ -70,3 +70,51 @@ updateThought({ params, body}, res) {
   
     .catch((err) => res.json(err));
 },
+//delete thought
+
+deleteThought([ params], res){
+    Thought.findByIdAndDelete({ _id: params.id})
+    .then((dbThoughtData) => {
+        if (!dbThoughtData){
+            return res.status(404).json({message: "No thought with this id found!"});
+
+        }
+        return User.findOneAndUpdate(
+            {thoughts: params.id},
+            {$pull: {
+            thoughts: params.id
+            }},
+            {new: true}
+
+        );
+
+    })
+    .then((dbUserData) => {
+        if (!dbUserData){
+            return res.status(404)
+            .json({message: "Thought Created But No User With This Id Found!!"})
+        }
+        res.json({ message: "Thought Successfully Deleted!!"})
+    })
+    .catch((err) => res.json(err));
+
+},
+
+//adding reaction
+
+addReaction({ params, body}, res){
+    Thought.findOneAndUpdate(
+        {_id: params.thoughtId},
+        {$addToSet: { reactions: body}}
+        {new: true, runValidators: true}
+    )
+    .then((dbThoughtData) => {
+if(!dbThoughtData){
+    res.status(404).json({ message: "No Thought With This Id Found!!"});
+    return;
+}
+res.json(dbThoughtData);
+    })
+    .catch((err) => res.json(err));
+
+},
