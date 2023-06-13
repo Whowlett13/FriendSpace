@@ -12,7 +12,7 @@ const ReactionSchema = new Schema(
     reactionBody: {
       type: String,
       required: true,
-      maxlength: 280,
+      maxLength: 280,
     },
 
     username: {
@@ -40,7 +40,7 @@ const ThoughtSchema = new Schema(
       type: String,
       required: "Thought is Required",
       minlength: 1,
-      maxlength: 280,
+      maxLength: 280,
     },
 
     createdAt: {
