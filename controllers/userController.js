@@ -6,9 +6,9 @@ const userController = {
     User.find({})
       .populate({
         path: "friends",
-        select: "-_v",
+        select: "-__v",
       })
-      .select("-_v")
+      .select("-__v")
       .sort({ _id: -1 })
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => {
@@ -23,13 +23,13 @@ const userController = {
     User.findOne({ _id: params.id })
       .populate({
         path: "thoughts",
-        select: "-_v",
+        select: "-__v",
       })
       .populate({
         path: "friends",
-        select: "-_v",
+        select: "-__v",
       })
-      .select("-_v")
+      .select("-__v")
       .then((dbUserData) => {
         if (dbUserData) {
           return res
