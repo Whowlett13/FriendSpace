@@ -67,4 +67,19 @@ const userController = {
       })
       .catch((err) => res.json(err));
   },
+
+  //Deleting A User
+  deleteUser({ params }, res) {
+    User.findOneAndDelete({ _id: params.id })
+      .then((dbUserData) => {
+        if (!dbUserData) {
+          return res
+            .status(404)
+            .json({ message: "No User Found With This Id!!" });
+        }
+      })
+      .catch((err) => res.json(err));
+  },
+
+  //Adding A friend
 };
