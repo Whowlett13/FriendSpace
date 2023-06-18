@@ -24,7 +24,7 @@ Link to Github Repo: https://github.com/Whowlett13/FriendSpace
 
 ## ScreenShot of Deployed Application:
 
-Link:
+Link: https://drive.google.com/file/d/1wYopSEibNEX87rfrbtqXHqZArCXTr3my/view
 
 ## Built With:
 
